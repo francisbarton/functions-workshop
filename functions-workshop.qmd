@@ -1,0 +1,8 @@
+---
+title: "Understanding Functions in R"
+subtitle: "NHS-R Community Workshop"
+date: "22 February 2024"
+author: "Fran Barton"
+format: revealjs
+---
+
