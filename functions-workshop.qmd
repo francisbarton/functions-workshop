@@ -13,7 +13,17 @@ format:
     menu:
       side: "right"
       width: "wide"
-editor_options: 
+    progress: true
+    code-fold: "show"
+    code-overflow: "wrap"
+    code-block-height: "650px"
+    code-block-border-left: "dodgerblue"
+    highlight-style: "arrow"
+    knitr:
+      opts_chunk:
+        echo: true
+monofont: "Fira Code"
+editor_options:
   chunk_output_type: console
 ---
 
@@ -63,16 +73,12 @@ functions, as and when you find them useful.
 ![](img/capsule.jpg){fig-alt="An Orion space capsule shown orbiting Earth"}
 
 <small>
-[wikimedia commons](https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Orion_with_ATV_SM.jpg/1200px-Orion_with_ATV_SM.jpg)
+[wikimedia commons](https://en.wikipedia.org/wiki/European_Service_Module)
 </small>
 
 ## Meet Fenella ...
 
-::::{.columns}
-:::{.column}
-![Fenella the security guard](img/guard.jpg){fig-alt="A security guard looking stern" }
-:::
-::::
+![](img/guard.jpg){fig-alt="A security guard looking stern" height="250px" width="575px"}
 
 ::::{.columns .fragment}
 :::{.column}
@@ -86,10 +92,16 @@ If it does, she will allow it into the warehouse (function).
 ::::
 
 
-## To the code again...
+## Fenella's job description
 
 * The labels that Fenella checks against are defined when you create the function
+* _Fenella doesn't look inside the box_
+* _The contents of the box only get dealt with inside the warehouse (function)_
 * What happens if you try to bring a parcel in that has an unexpected label?
+* What happens if you don't supply a box for one of the expected labels?
+
+
+## To the code again...
 
 ::::{.fragment}
 :::{.callout-note title="R code"}
@@ -106,17 +118,177 @@ If it does, she will allow it into the warehouse (function).
 ![](img/capsule.jpg){fig-alt="An Orion space capsule shown orbiting Earth"}
 
 <small>
-[wikimedia commons](https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Orion_with_ATV_SM.jpg/1200px-Orion_with_ATV_SM.jpg)
+[wikimedia commons](https://en.wikipedia.org/wiki/European_Service_Module)
 </small>
 
 :::
 
 :::{.column .fragment}
-
 * A function can contain a lot of tasks
 * A function can just do one task
-* How big you make your functions is a matter for you
+* How big you make your functions is a matter for you 😊
+:::
+::::
 
+
+## Using functions to tame repetitive code
+
+"If you find yourself writing the same thing more than twice, turn it into a
+function."
+
+:::{.fragment}
+To which I would add,
+
+"If you find yourself using a function in more than one project, add it to a
+package."
+:::
+
+
+## An example (1) {.smaller}
+
+```{r sw1}
+#| echo: true
+
+library(dplyr)
+
+starwars
+
+film <- "A New Hope"
+
+```
+
+
+## An example (2) {.smaller}
+
+:::{.fragment}
+```{r sw2}
+
+droids_mean_height <- starwars |>
+  filter(species == "Droid") |>
+  summarise(droid_mean_height = mean(height, na.rm = TRUE))
+
+droids_mean_height
+```
+:::
+
+:::{.fragment}
+```{r sw3}
+
+ewoks_mean_height <- starwars |>
+  filter(species == "Ewok") |>
+  summarise(droid_mean_height = mean(height, na.rm = TRUE))
+
+ewoks_mean_height
+```
+:::
+
+## Try again... {.smaller}
+
+
+```{r sw4}
+
+droids_mean_height <- starwars |>
+  filter(species == "Droid") |>
+  summarise(droid_mean_height = mean(height, na.rm = TRUE))
+
+droids_mean_height
+
+ewoks_mean_height <- starwars |>
+  filter(species == "Ewok") |>
+  summarise(ewok_mean_height = mean(height, na.rm = TRUE))
+
+ewoks_mean_height
+
+```
+
+
+## Convert common code to a function
+
+:::{.fragment}
+Note that we don't need to worry about the output will be called.
+The user of the function will decide that when they run it.
+:::
+
+:::{.fragment}
+```{r sw5, filename="Original code"}
+
+droids_mean_height <- starwars |>
+  filter(species == "Droid") |>
+  summarise(droid_mean_height = mean(height, na.rm = TRUE))
+
+```
+:::
+
+:::{.fragment}
+First steps: name it and wrap it
+
+```{r sw6, filename="Name it and wrap it"}
+
+get_species_mean_height <- function() {
+  starwars |>
+    filter(species == "Droid") |>
+    summarise(droid_mean_height = mean(height, na.rm = TRUE))
+}
+
+```
+:::
+
+
+## Back to RStudio...
+
+::::{.fragment}
+:::{.callout-note title="R code"}
+`03_refactoring.R`
+:::
+::::
+
+## Advantages of refactoring to a function
+
+* You can spot efficiencies
+* You can be very clear what the inputs and outputs ought to be
+* You might be able to pass it to `lapply()` or `purrr::map()`, if useful
+
+
+## Getting functions to 'click'
+
+
+::::{.columns}
+:::{.column}
+I remember it taking me a while, when I first tried understanding functions, for
+them to 'click' for me.
+
+I didn't understand the difference between variables inside the function
+and outside it.
+I didn't really get what the point was.
+:::
+
+:::{.column}
+![](img/lego.png){fig-alt="Three coloured LEGO (TM) blocks"}
+
+<small>
+[pngall](https://www.pngall.com/lego-png/download/53075)
+</small>
+:::
+::::
+
+## Getting functions to 'click'
+
+::::{.columns}
+:::{.column}
+
+![](img/lego.png){fig-alt="Three coloured LEGO (TM) blocks"}
+
+<small>
+[pngall](https://www.pngall.com/lego-png/download/53075)
+</small>
+:::
+
+:::{.column}
+I didn't realise the power of the _abstraction_ of using variables (as
+function arguments), instead of just passing in values.
+
+Eventually I realised that this means your code can work harder for you.
+It can do its thing in different situations, and work with different inputs.
 :::
 ::::
 
@@ -141,15 +313,34 @@ To quote Hadley Wickham & co.:
 
 ## How can functions help us do our jobs well?
 
+::::{.columns}
+:::{.column}
 ![](img/r4ds_quote.png)
-
-:::{.fragment}
-* Naming
-* Efficiency
-* Accuracy
-* Transferability
 :::
+
+:::{.column}
+1. Naming
+2. Efficiency
+3. Accuracy
+4. Transferability
+:::
+::::
+
 
 ## Useful resources
 
 * "Functions" in the [R for Data Science book](https://r4ds.hadley.nz/functions)
+* Recommendations on naming functions in [Tidy design principles](https://design.tidyverse.org/function-names.html)
+
+
+## Some things we haven't covered
+
+* Pros and cons of writing longer or shorter functions
+* Checking function arguments
+* Passing functions to other functions eg `purrr::map()`
+* Using anonymous (one-off) functions in `dplyr::mutate()`, for example
+* Writing tests for functions
+* Creating an R package
+
+
+## Thanks for attending!
