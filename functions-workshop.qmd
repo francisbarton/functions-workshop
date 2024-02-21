@@ -14,7 +14,6 @@ format:
       side: "right"
       width: "wide"
     progress: true
-    code-fold: "show"
     code-overflow: "wrap"
     code-block-height: "650px"
     code-block-border-left: "dodgerblue"
@@ -22,6 +21,8 @@ format:
     knitr:
       opts_chunk:
         echo: true
+filters:
+  - code_fold.lua
 monofont: "Fira Code"
 editor_options:
   chunk_output_type: console
@@ -76,6 +77,21 @@ functions, as and when you find them useful.
 [wikimedia commons](https://en.wikipedia.org/wiki/European_Service_Module)
 </small>
 
+## One way of thinking about arguments
+
+::::{.columns}
+:::{.column}
+![](img/scooby_doo.jpg)
+:::
+
+:::{.column}
+The function, in a way, doesn't need to care about what's under the mask.
+
+Whatever it is, just (try to) do _this_ to it.
+:::
+::::
+
+
 ## Meet Fenella ...
 
 ![](img/guard.jpg){fig-alt="A security guard looking stern" height="250px" width="575px"}
@@ -108,6 +124,8 @@ If it does, she will allow it into the warehouse (function).
 `02_arguments.R`
 :::
 ::::
+
+
 
 ## What is a function anyway? Take 2
 
@@ -152,8 +170,6 @@ package."
 library(dplyr)
 
 starwars
-
-film <- "A New Hope"
 
 ```
 
@@ -202,14 +218,8 @@ ewoks_mean_height
 ```
 
 
-## Convert common code to a function
+## Convert common code to a function (1)
 
-:::{.fragment}
-Note that we don't need to worry about the output will be called.
-The user of the function will decide that when they run it.
-:::
-
-:::{.fragment}
 ```{r sw5, filename="Original code"}
 
 droids_mean_height <- starwars |>
@@ -217,7 +227,6 @@ droids_mean_height <- starwars |>
   summarise(droid_mean_height = mean(height, na.rm = TRUE))
 
 ```
-:::
 
 :::{.fragment}
 First steps: name it and wrap it
@@ -233,6 +242,12 @@ get_species_mean_height <- function() {
 ```
 :::
 
+:::{.fragment}
+Note that we don't need to worry about the _output_ will be called (if
+anything).
+The user of the function will decide that when they run it.
+:::
+
 
 ## Back to RStudio...
 
@@ -246,7 +261,7 @@ get_species_mean_height <- function() {
 
 * You can spot efficiencies
 * You can be very clear what the inputs and outputs ought to be
-* You might be able to pass it to `lapply()` or `purrr::map()`, if useful
+* You might be able to pass it to `lapply()` or `purrr::map()`, if useful.
 
 
 ## Getting functions to 'click'
@@ -259,7 +274,7 @@ them to 'click' for me.
 
 I didn't understand the difference between variables inside the function
 and outside it.
-I didn't really get what the point was.
+I didn't really get what the _point_ was.
 :::
 
 :::{.column}
