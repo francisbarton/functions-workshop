@@ -3,8 +3,6 @@ title: "Understanding Functions in R"
 subtitle: "NHS-R Community Workshop"
 date: "22 February 2024"
 author: "Fran Barton"
-mainfont: "Fira Sans"
-monofont: "Fira Code"
 format:
   revealjs:
     incremental: true
@@ -15,6 +13,8 @@ format:
     menu:
       side: "right"
       width: "wide"
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -38,6 +38,8 @@ functions, as and when you find them useful.
 * What is a function anyway?
 * Function arguments
 * Using functions to improve repetitive code
+* Why are functions useful for analysts?
+* Time for questions / chat
 
 
 ## Over to RStudio...
@@ -46,4 +48,108 @@ functions, as and when you find them useful.
 * Writing a very (very!) basic function
 :::
 
-* 
+:::{.callout-note title="R code"}
+`01_initial.R`
+:::
+
+* Writing some more pretty basic functions
+* Playing with arguments
+* Variables inside and outside the function
+
+## What is a function anyway?
+
+"An encapsulation of a task"?
+
+![](img/capsule.jpg){fig-alt="An Orion space capsule shown orbiting Earth"}
+
+<small>
+[wikimedia commons](https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Orion_with_ATV_SM.jpg/1200px-Orion_with_ATV_SM.jpg)
+</small>
+
+## Meet Fenella ...
+
+::::{.columns}
+:::{.column}
+![Fenella the security guard](img/guard.jpg){fig-alt="A security guard looking stern" }
+:::
+::::
+
+::::{.columns .fragment}
+:::{.column}
+Fenella's job is to check that the parcel has the right **label** on it.
+If it does, she will allow it into the warehouse (function).
+:::
+
+:::{.column}
+![](img/parcel.jpg){fig-alt="A humble parcel"}
+:::
+::::
+
+
+## To the code again...
+
+* The labels that Fenella checks against are defined when you create the function
+* What happens if you try to bring a parcel in that has an unexpected label?
+
+::::{.fragment}
+:::{.callout-note title="R code"}
+`02_arguments.R`
+:::
+::::
+
+## What is a function anyway? Take 2
+
+::::{.columns}
+:::{.column}
+"An encapsulation of a task"?
+
+![](img/capsule.jpg){fig-alt="An Orion space capsule shown orbiting Earth"}
+
+<small>
+[wikimedia commons](https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Orion_with_ATV_SM.jpg/1200px-Orion_with_ATV_SM.jpg)
+</small>
+
+:::
+
+:::{.column .fragment}
+
+* A function can contain a lot of tasks
+* A function can just do one task
+* How big you make your functions is a matter for you
+
+:::
+::::
+
+## Why are functions useful?
+
+To quote Hadley Wickham & co.:
+
+:::{.callout-tip title="R for Data Science, Functions section"}
+<blockquote>
+1. You can give a function an evocative name that makes your code easier to understand.
+2. As requirements change, you only need to update code in one place, instead of many.
+3. You eliminate the chance of making incidental mistakes when you copy and paste (i.e. updating a variable name in one place, but not in another).
+4. It makes it easier to reuse work from project-to-project, increasing your productivity over time.
+</blockquote>
+:::
+
+:::{.fragment}
+[R for Data Science](https://r4ds.hadley.nz/functions){preview-link="true"}
+:::
+
+
+
+## How can functions help us do our jobs well?
+
+![](img/r4ds_quote.png)
+
+:::{.fragment}
+* Naming
+* Efficiency
+* Accuracy
+* Transferability
+:::
+
+## Useful resources
+
+* "Functions" in the [R for Data Science book](https://r4ds.hadley.nz/functions)
