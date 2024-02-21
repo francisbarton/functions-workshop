@@ -14,7 +14,6 @@ format:
       side: "right"
       width: "wide"
     progress: true
-    code-fold: "show"
     code-overflow: "wrap"
     code-block-height: "650px"
     code-block-border-left: "dodgerblue"
@@ -22,6 +21,8 @@ format:
     knitr:
       opts_chunk:
         echo: true
+filters:
+  - code_fold.lua
 monofont: "Fira Code"
 editor_options:
   chunk_output_type: console
@@ -109,6 +110,11 @@ If it does, she will allow it into the warehouse (function).
 :::
 ::::
 
+## Another way of thinking about arguments!
+
+![](img/scooby_doo.jpg)
+
+
 ## What is a function anyway? Take 2
 
 ::::{.columns}
@@ -152,8 +158,6 @@ package."
 library(dplyr)
 
 starwars
-
-film <- "A New Hope"
 
 ```
 
@@ -202,7 +206,7 @@ ewoks_mean_height
 ```
 
 
-## Convert common code to a function
+## Convert common code to a function (1)
 
 :::{.fragment}
 Note that we don't need to worry about the output will be called.
@@ -232,6 +236,10 @@ get_species_mean_height <- function() {
 
 ```
 :::
+
+## Convert common code to a function (2)
+
+
 
 
 ## Back to RStudio...
