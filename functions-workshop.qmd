@@ -3,6 +3,47 @@ title: "Understanding Functions in R"
 subtitle: "NHS-R Community Workshop"
 date: "22 February 2024"
 author: "Fran Barton"
-format: revealjs
+mainfont: "Fira Sans"
+monofont: "Fira Code"
+format:
+  revealjs:
+    incremental: true
+    self-contained: true
+    mathjax: null
+    theme: "sky"
+    logo: "nhs-r-community_logo.svg"
+    menu:
+      side: "right"
+      width: "wide"
 ---
 
+
+## Welcome!
+
+
+### Some intentions for the session:
+
+* I want to get you writing some functions
+* I want you to 'get' something about the way a function works
+* I want you to feel safe to ask questions and try things out.
+
+## Intended outcome: {.center}
+
+* I hope as a result of today you will be able to write your own
+functions, as and when you find them useful.
+
+## Structure
+
+* Writing very simple functions
+* What is a function anyway?
+* Function arguments
+* Using functions to improve repetitive code
+
+
+## Over to RStudio...
+
+::: {.nonincremental}
+* Writing a very (very!) basic function
+:::
+
+* 
