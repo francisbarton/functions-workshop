@@ -33,6 +33,7 @@ get_species_mean_height <- function() {
 # Does it work?
 get_species_mean_height()
 
+# !
 droids_mean_height
 
 droids_mean_height <- get_species_mean_height()
