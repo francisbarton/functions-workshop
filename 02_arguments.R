@@ -12,7 +12,7 @@ y <- 4
 divide(3)
 
 
-divide(3, y)
+divide(x = 3, y = y)
 divide(y, 3)
 
 # R processes the arguments in the order they are defined

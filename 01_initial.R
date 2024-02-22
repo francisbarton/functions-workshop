@@ -39,4 +39,7 @@ y <- 5
 multiply_input <- \(x) x * y
 multiply_input(6)
 
+multiply_input2 <- \(`6`) `6` * y
+multiply_input2(6)
+
 # Why will it look for y in the global environment, but not x?
