@@ -383,6 +383,12 @@ To quote Hadley Wickham & co.:
 * "Functions" in the [R for Data Science book](https://r4ds.hadley.nz/functions)
 * Recommendations on naming functions in [Tidy design principles](https://design.tidyverse.org/function-names.html)
 
+:::{.fragment}
+And a special (off-topic... or is it?) shout-out to
+
+* _[The Carrier Bag Theory of Fiction](https://theanarchistlibrary.org/mirror/u/uk/ursula-k-le-guin-the-carrier-bag-theory-of-fiction.pdf)_ (1986) by Ursula Le Guin
+:::
+
 
 ## Some things we haven't covered
 
