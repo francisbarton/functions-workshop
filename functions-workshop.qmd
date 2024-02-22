@@ -125,8 +125,6 @@ If it does, she will allow it into the warehouse (function).
 :::
 ::::
 
-
-
 ## What is a function anyway? Take 2
 
 ::::{.columns}
