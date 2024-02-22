@@ -125,16 +125,16 @@ If it does, she will allow it into the warehouse (function).
 :::
 ::::
 
-## What is a function anyway? Take 2
+## The carrier bag theory of function(s)
 
 ::::{.columns}
 :::{.column}
-"An encapsulation of a task"?
+"An encapsulation of a task"? A carrier bag?
 
-![](img/capsule.jpg){fig-alt="An Orion space capsule shown orbiting Earth"}
+![](img/carrier.jpg){fig-alt="A Poundland carrier bag and a seagull"}
 
 <small>
-[wikimedia commons](https://en.wikipedia.org/wiki/European_Service_Module)
+[Ben Sutherland](https://www.flickr.com/photos/bensutherland/7400428126/)
 </small>
 
 :::
@@ -146,6 +146,44 @@ If it does, she will allow it into the warehouse (function).
 :::
 ::::
 
+
+## Put it in the bag
+
+If you have code that looks like this:
+
+:::{.fragment}
+
+```{r carrier1}
+#| eval: false
+
+source("data_input1.R")
+source("data_input2.R")
+data3 <- read.csv("more_data.csv")
+data_out <- rbind(data1, data2, data3)
+
+...
+
+```
+
+:::
+
+:::{.fragment}
+... you might want to put it all in a function
+
+```{r carrier2}
+#| eval: false
+
+get_data <- function() {
+  source("data_input1.R")
+  source("data_input2.R")
+  data3 <- read.csv("more_data.csv")
+  rbind(data1, data2, data3)
+}
+
+data_out <- get_data()
+
+```
+:::
 
 ## Using functions to tame repetitive code
 
